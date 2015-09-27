@@ -61,10 +61,7 @@
 						var meanDisplay = options.meanDisplay;
 
 						//detect known mobile/tablet usage
-						var isMobile = false;
-						if ( (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/iPad/i)) || (navigator.userAgent.match(/Android/i)) || (navigator.userAgent.match(/Blackberry/i)) || (navigator.userAgent.match(/Windows Phone/i)) ) {
-								isMobile = true;
-						}
+						var isMobile = navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/Blackberry/i) || navigator.userAgent.match(/Windows Phone/i);
 
 						var menuOn = false;
 						var meanMenuExist = false;
