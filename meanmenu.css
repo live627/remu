@@ -98,11 +98,6 @@ a.meanmenu-reveal {
 	visibility: visible;
 }
 
-.mean-container .mean-nav ul li.mean-last a {
-	border-bottom: none;
-	margin-bottom: 0;
-}
-
 .mean-container .mean-nav ul li li li a {
 	width: 70%;
 	padding: 1em 15%;
