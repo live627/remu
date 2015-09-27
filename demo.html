@@ -122,9 +122,9 @@ article {
 <script src="jquery-2.1.4.min.js"></script>
 <script src="jquery.meanmenu.js"></script>
 <script>
-	jQuery(document).ready(function () {
-	    jQuery('header nav').meanmenu();
-	});
+	document.addEventListener("DOMContentLoaded", function () {
+		new MeanMenu();
+	}, false);
 </script>
 </body>
 </html>
