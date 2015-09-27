@@ -6,8 +6,8 @@
 
 (function ($) {
 	"use strict";
-				var defaults = {
 		window.MeanMenu = function (options) {
+				options = $.extend({
 						meanMenuTarget: 'header nav', // Target the current HTML markup you wish to replace
 						meanMenuContainer: 'body', // Choose where meanmenu will be placed within the HTML
 						meanMenuClose: "X", // single character you want to represent the close menu button
@@ -21,10 +21,8 @@
 						meanRemoveAttrs: false, // true to remove classes and IDs, false to keep them
 						onePage: false, // set to true for one page sites
 						meanDisplay: "block", // override display method for table cell based layouts e.g. table-cell
-				};
-				options = $.extend(defaults, options);
+				}, options);
 
-				return this.each(function () {
 						var meanMenu = options.meanMenuTarget;
 						var meanContainer = options.meanMenuContainer;
 						var meanMenuClose = options.meanMenuClose;
