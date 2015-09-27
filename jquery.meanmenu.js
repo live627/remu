@@ -66,11 +66,6 @@
 								isMobile = true;
 						}
 
-						if ( (navigator.userAgent.match(/MSIE 8/i)) || (navigator.userAgent.match(/MSIE 7/i)) ) {
-							// add scrollbar for IE7 & 8 to stop breaking resize function on small content sites
-								jQuery('html').css("overflow-y" , "scroll");
-						}
-
 						var menuOn = false;
 						var meanMenuExist = false;
 
