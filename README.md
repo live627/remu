@@ -106,3 +106,9 @@ removeElements: ""
 meanDisplay: "block"
 
 - by default this is block, sometimes you may want to switch this to table or table-cell or inline-block etc. so now you can.
+
+## Changes from MeanMenu
+- Removed the following properties in favor of CSS:
+	meanRevealPosition
+	meanRevealPositionDistance
+	meanRevealColour

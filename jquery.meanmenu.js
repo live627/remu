@@ -33,9 +33,6 @@
 						meanMenuClose: "X", // single character you want to represent the close menu button
 						meanMenuCloseSize: "18px", // set font size of close button
 						meanMenuOpen: "<span /><span /><span />", // text/markup you want when menu is closed
-						meanRevealPosition: "right", // left right or center positions
-						meanRevealPositionDistance: "0", // Tweak the position of the menu
-						meanRevealColour: "", // override CSS colours for the reveal background
 						meanScreenWidth: "480", // set the screen width you want meanmenu to kick in at
 						meanNavPush: "", // set a height here in px, em or % if you want to budge your layout now the navigation is missing.
 						meanShowChildren: true, // true to show children in the menu, false to hide them
@@ -58,9 +55,6 @@
 						var meanMenuClose = options.meanMenuClose;
 						var meanMenuCloseSize = options.meanMenuCloseSize;
 						var meanMenuOpen = options.meanMenuOpen;
-						var meanRevealPosition = options.meanRevealPosition;
-						var meanRevealPositionDistance = options.meanRevealPositionDistance;
-						var meanRevealColour = options.meanRevealColour;
 						var meanScreenWidth = options.meanScreenWidth;
 						var meanNavPush = options.meanNavPush;
 						var meanRevealClass = ".meanmenu-reveal";
@@ -84,35 +78,8 @@
 								jQuery('html').css("overflow-y" , "scroll");
 						}
 
-						var meanRevealPos = "";
-						var meanCentered = function() {
-							if (meanRevealPosition === "center") {
-								var newWidth = window.innerWidth || document.documentElement.clientWidth;
-								var meanCenter = ( (newWidth/2)-22 )+"px";
-								meanRevealPos = "left:" + meanCenter + ";right:auto;";
-
-								if (!isMobile) {
-									jQuery('.meanmenu-reveal').css("left",meanCenter);
-								} else {
-									jQuery('.meanmenu-reveal').animate({
-											left: meanCenter
-									});
-								}
-							}
-						};
-
 						var menuOn = false;
 						var meanMenuExist = false;
-
-
-						if (meanRevealPosition === "right") {
-								meanRevealPos = "right:" + meanRevealPositionDistance + ";left:auto;";
-						}
-						if (meanRevealPosition === "left") {
-								meanRevealPos = "left:" + meanRevealPositionDistance + ";right:auto;";
-						}
-						// run center function
-						meanCentered();
 
 						// set all styles for mean-reveal
 						var $navreveal = "";
@@ -264,10 +231,8 @@
 										meanOriginal();
 										if (currentWidth <= meanScreenWidth) {
 												showMeanMenu();
-												meanCentered();
 										}
 								} else {
-										meanCentered();
 										if (currentWidth <= meanScreenWidth) {
 												if (meanMenuExist === false) {
 														showMeanMenu();
