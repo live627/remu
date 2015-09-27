@@ -178,30 +178,20 @@
 							}
 						};
 
-					jQuery(window).resize(function () {
+						var refreshMeanMenu = function() {
 								// get browser width
-								currentWidth = window.innerWidth || document.documentElement.clientWidth;
+								var currentWidth = window.innerWidth || document.documentElement.clientWidth;
 
-								if (!isMobile) {
-										meanOriginal();
 										if (currentWidth <= meanScreenWidth) {
-												showMeanMenu();
-										}
-								} else {
-										if (currentWidth <= meanScreenWidth) {
-												if (meanMenuExist === false) {
 														showMeanMenu();
-												}
+
 										} else {
 												meanOriginal();
 										}
-						});
-						*
-						* */
+						}
 					window.addEventListener("resize", refreshMeanMenu, false);
 
 					// run main menuMenu function on load
-					showMeanMenu();
-				});
+					refreshMeanMenu();
 		};
 })(jQuery);
