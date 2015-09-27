@@ -44,9 +44,6 @@
 				};
 				options = $.extend(defaults, options);
 
-				// get browser width
-				var currentWidth = window.innerWidth || document.documentElement.clientWidth;
-
 				return this.each(function () {
 						var meanMenu = options.meanMenuTarget;
 						var meanContainer = options.meanMenuContainer;
