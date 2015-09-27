@@ -31,7 +31,6 @@
 						meanMenuTarget: jQuery(this), // Target the current HTML markup you wish to replace
 						meanMenuContainer: 'body', // Choose where meanmenu will be placed within the HTML
 						meanMenuClose: "X", // single character you want to represent the close menu button
-						meanMenuCloseSize: "18px", // set font size of close button
 						meanMenuOpen: "<span /><span /><span />", // text/markup you want when menu is closed
 						meanScreenWidth: "480", // set the screen width you want meanmenu to kick in at
 						meanNavPush: "", // set a height here in px, em or % if you want to budge your layout now the navigation is missing.
@@ -167,9 +166,6 @@
 									jQuery($navreveal).click(function(e){
 										e.preventDefault();
 								if( menuOn === false ) {
-												$navreveal.css("text-align", "center");
-												$navreveal.css("text-indent", "0");
-												$navreveal.css("font-size", meanMenuCloseSize);
 												jQuery('.mean-nav ul:first').slideDown();
 												menuOn = true;
 										} else {
