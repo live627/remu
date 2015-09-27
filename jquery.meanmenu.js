@@ -42,7 +42,6 @@
 						meanRemoveAttrs: false, // true to remove classes and IDs, false to keep them
 						onePage: false, // set to true for one page sites
 						meanDisplay: "block", // override display method for table cell based layouts e.g. table-cell
-						removeElements: "" // set to hide page elements
 				};
 				options = $.extend(defaults, options);
 
@@ -53,7 +52,6 @@
 						var meanMenu = options.meanMenuTarget;
 						var meanContainer = options.meanMenuContainer;
 						var meanMenuClose = options.meanMenuClose;
-						var meanMenuCloseSize = options.meanMenuCloseSize;
 						var meanMenuOpen = options.meanMenuOpen;
 						var meanScreenWidth = options.meanScreenWidth;
 						var meanNavPush = options.meanNavPush;
@@ -65,7 +63,6 @@
 						var meanRemoveAttrs = options.meanRemoveAttrs;
 						var onePage = options.onePage;
 						var meanDisplay = options.meanDisplay;
-						var removeElements = options.removeElements;
 
 						//detect known mobile/tablet usage
 						var isMobile = false;
@@ -100,7 +97,6 @@
 							jQuery(meanMenu).css('display', meanDisplay);
 							menuOn = false;
 							meanMenuExist = false;
-							jQuery(removeElements).removeClass('mean-remove');
 						};
 
 						// navigation reveal
@@ -120,12 +116,7 @@
 									// remove all classes from EVERYTHING inside meanmenu nav
 									if(meanRemoveAttrs) {
 										jQuery('nav.mean-nav ul, nav.mean-nav ul *').each(function() {
-											// First check if this has mean-remove class
-											if (jQuery(this).is('.mean-remove')) {
-												jQuery(this).attr('class', 'mean-remove');
-											} else {
 												jQuery(this).removeAttr("class");
-											}
 											jQuery(this).removeAttr("id");
 										});
 									}
@@ -187,7 +178,6 @@
 										}
 											$navreveal.toggleClass("meanclose");
 											meanInner();
-											jQuery(removeElements).addClass('mean-remove');
 									});
 
 									// for one page websites, reset all variables...
