@@ -178,24 +178,6 @@
 							}
 						};
 
-						if (!isMobile) {
-								// reset menu on resize above meanScreenWidth
-								jQuery(window).resize(function () {
-										currentWidth = window.innerWidth || document.documentElement.clientWidth;
-										if (currentWidth > meanScreenWidth) {
-												meanOriginal();
-										} else {
-											meanOriginal();
-										}
-										if (currentWidth <= meanScreenWidth) {
-												showMeanMenu();
-												meanCentered();
-										} else {
-											meanOriginal();
-										}
-								});
-						}
-
 					jQuery(window).resize(function () {
 								// get browser width
 								currentWidth = window.innerWidth || document.documentElement.clientWidth;
@@ -213,8 +195,10 @@
 										} else {
 												meanOriginal();
 										}
-								}
 						});
+						*
+						* */
+					window.addEventListener("resize", refreshMeanMenu, false);
 
 					// run main menuMenu function on load
 					showMeanMenu();
