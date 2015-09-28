@@ -95,6 +95,7 @@
 									// push in a holder div (this can be used if removal of nav is causing layout issues)
 									jQuery(meanMenu).before('<div class="mean-push" />');
 									jQuery('.mean-push').css("margin-top",meanNavPush);
+									document.querySelector('.mean-nav ul').classList.add('animated');
 
 									// hide current navigation and reveal mean nav link
 									jQuery(meanMenu).hide();
@@ -115,17 +116,18 @@
 														if(jQuery(this).children().length){
 																jQuery(this,'li:first').parent().append('<a class="mean-expand" href="#" style="font-size: '+ meanMenuCloseSize +'">'+ meanExpand +'</a>');
 														}
+														this.classList.add('animated');
 												});
 												jQuery('.mean-expand').on("click",function(e){
 														e.preventDefault();
-															if (jQuery(this).hasClass("mean-clicked")) {
+															if (this.classList.contains("mean-clicked")) {
 																	jQuery(this).text(meanExpand);
-																jQuery(this).prev('ul').slideUp(300, function(){});
+																this.previousElementSibling.classList.remove('slideInDown');
 														} else {
 																jQuery(this).text(meanContract);
-																jQuery(this).prev('ul').slideDown(300, function(){});
+																this.previousElementSibling.classList.add('slideInDown');
 														}
-														jQuery(this).toggleClass("mean-clicked");
+														this.classList.toggle("mean-clicked");
 												});
 											} else {
 													jQuery('.mean-nav ul ul').show();
@@ -138,10 +140,10 @@
 									jQuery($navreveal).click(function(e){
 										e.preventDefault();
 								if( menuOn === false ) {
-												jQuery('.mean-nav ul:first').slideDown();
+												document.querySelector('.mean-nav ul').classList.add('slideInDown');
 												menuOn = true;
 										} else {
-											jQuery('.mean-nav ul:first').slideUp();
+											document.querySelector('.mean-nav ul').classList.remove('slideInDown');
 											menuOn = false;
 										}
 											$navreveal.toggleClass("meanclose");
