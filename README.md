@@ -24,7 +24,6 @@ Live Demo:
 `meanMenuClose: "X"` Single character you want to represent the close menu button<br>
 `meanMenuOpen: "<span /><span /><span />"` Text/markup you want when menu is closed, styling in CSS provides 3 bars with these spans<br>
 `meanScreenWidth: "480"` Set the screen width you want meanmenu to kick in at<br>
-`meanShowChildren: true` true to show children in the menu, false to hide them<br>
 `meanExpandableChildren: true` true to allow expand/collapse children<br>
 `meanExpand: "+"` single character you want to represent the expand for ULs<br>
 `meanContract: "-"` single character you want to represent the contract for ULs<br>
@@ -40,5 +39,6 @@ Live Demo:
  - `meanMenuCloseSize`
  - `removeElements`
  - `meanNavPush`
+ - `meanShowChildren`
 - `.mean-last` is no more as it was not being used and can be reinstated by a pseudo-selector
 - Also removed `.mean-remove` as it seemed redundant. To expand uupon the example given: if you had a search box called `.search`, use `.mean-container .search`
