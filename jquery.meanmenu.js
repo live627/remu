@@ -36,7 +36,6 @@
 		//detect known mobile/tablet usage
 		var isMobile = navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/Blackberry/i) || navigator.userAgent.match(/Windows Phone/i);
 
-		var menuOn = false;
 		var meanMenuExist = false;
 
 		// set all styles for mean-reveal
@@ -60,7 +59,6 @@
 			jQuery('.mean-bar').remove();
 			jQuery(meanContainer).removeClass("mean-container");
 			jQuery(meanMenu).css('display', meanDisplay);
-			menuOn = false;
 			meanMenuExist = false;
 		};
 
@@ -118,15 +116,8 @@
 			$navreveal.removeClass("meanclose");
 			jQuery($navreveal).click(function(e){
 				e.preventDefault();
-				if( menuOn === false ) {
-					document.querySelector('.mean-nav ul').classList.add('slideInDown');
-					menuOn = true;
-				} else {
-					document.querySelector('.mean-nav ul').classList.remove('slideInDown');
-					menuOn = false;
-				}
-
 				$navreveal.toggleClass("meanclose");
+				document.querySelector('.mean-nav ul').classList.toggle('slideInDown');
 				meanInner();
 			});
 
@@ -134,7 +125,6 @@
 			if ( onePage ) {
 				jQuery('.mean-nav ul > li > a:first-child').on( "click" , function () {
 					jQuery('.mean-nav ul:first').slideUp();
-					menuOn = false;
 					jQuery($navreveal).toggleClass("meanclose").html(meanMenuOpen);
 				});
 			}
