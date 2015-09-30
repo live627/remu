@@ -35,12 +35,10 @@ Live Demo:
 
 ## Changes from MeanMenu
 - Removed the following properties in favor of CSS:
-```
-meanRevealPosition
-eanRevealPositionDistance
-meanRevealColour
-meanMenuCloseSize
-removeElements
-```
+ - `meanRevealPosition`
+ - `meanRevealPositionDistance`
+ - `meanRevealColour`
+ - `meanMenuCloseSize`
+ - `removeElements`
 - `.mean-last` is no more as it was not being used and can be reinstated by a pseudo-selector
 - Also removed `.mean-remove` as it seemed redundant. To expand uupon the example given: if you had a search box called `.search`, use `.mean-container .search`
