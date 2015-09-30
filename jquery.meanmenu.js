@@ -103,12 +103,12 @@
 
 			jQuery('.mean-expand').on("click",function(e){
 				e.preventDefault();
-					if (this.classList.contains("mean-clicked")) {
-							jQuery(this).text(meanExpand);
-						this.previousElementSibling.classList.remove('slideInDown');
+				if (this.classList.contains("mean-clicked")) {
+					jQuery(this).text(meanExpand);
+					this.previousElementSibling.classList.remove('slideInDown');
 				} else {
-						jQuery(this).text(meanContract);
-						this.previousElementSibling.classList.add('slideInDown');
+					jQuery(this).text(meanContract);
+					this.previousElementSibling.classList.add('slideInDown');
 				}
 				this.classList.toggle("mean-clicked");
 			});
