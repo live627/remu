@@ -32,10 +32,6 @@
 		var meanRemoveAttrs = options.meanRemoveAttrs;
 		var onePage = options.onePage;
 		var meanDisplay = options.meanDisplay;
-
-		//detect known mobile/tablet usage
-		var isMobile = navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/Blackberry/i) || navigator.userAgent.match(/Windows Phone/i);
-
 		var meanMenuExist = false;
 
 		// set all styles for mean-reveal
