@@ -13,7 +13,6 @@
 						meanMenuClose: "X", // single character you want to represent the close menu button
 						meanMenuOpen: "<span /><span /><span />", // text/markup you want when menu is closed
 						meanScreenWidth: "480", // set the screen width you want meanmenu to kick in at
-						meanNavPush: "", // set a height here in px, em or % if you want to budge your layout now the navigation is missing.
 						meanShowChildren: true, // true to show children in the menu, false to hide them
 						meanExpandableChildren: true, // true to allow expand/collapse children
 						meanExpand: "+", // single character you want to represent the expand for ULs
@@ -28,7 +27,6 @@
 						var meanMenuClose = options.meanMenuClose;
 						var meanMenuOpen = options.meanMenuOpen;
 						var meanScreenWidth = options.meanScreenWidth;
-						var meanNavPush = options.meanNavPush;
 						var meanRevealClass = ".meanmenu-reveal";
 						var meanShowChildren = options.meanShowChildren;
 						var meanExpandableChildren = options.meanExpandableChildren;
@@ -62,7 +60,7 @@
 								return;
 							}
 
-							jQuery('.mean-bar,.mean-push').remove();
+							jQuery('.mean-bar').remove();
 							jQuery(meanContainer).removeClass("mean-container");
 							jQuery(meanMenu).css('display', meanDisplay);
 							menuOn = false;
@@ -91,10 +89,6 @@
 											jQuery(this).removeAttr("id");
 										});
 									}
-
-									// push in a holder div (this can be used if removal of nav is causing layout issues)
-									jQuery(meanMenu).before('<div class="mean-push" />');
-									jQuery('.mean-push').css("margin-top",meanNavPush);
 									document.querySelector('.mean-nav ul').classList.add('animated');
 
 									// hide current navigation and reveal mean nav link
