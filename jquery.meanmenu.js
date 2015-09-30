@@ -76,8 +76,8 @@
 			// remove all classes from EVERYTHING inside meanmenu nav
 			if(meanRemoveAttrs) {
 				jQuery('nav.mean-nav ul, nav.mean-nav ul *').each(function() {
-					jQuery(this).removeAttr("class");
-					jQuery(this).removeAttr("id");
+					this.removeAttribute("class");
+					this.removeAttribute("id");
 				});
 			}
 			document.querySelector('.mean-nav ul').classList.add('animated');
