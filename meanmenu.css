@@ -152,7 +152,16 @@ a.meanmenu-reveal {
 
 /* Fix for box sizing on Foundation Framework etc. */
 .mean-container .mean-bar, .mean-container .mean-bar * {
-	-webkit-box-sizing: content-box;
-	-moz-box-sizing: content-box;
 	box-sizing: content-box;
+}
+
+.animated {
+	transition: all 0.5s ease-in-out;
+	opacity: 0;
+	overflow: hidden;
+	max-height: 0;
+}
+.slideInDown {
+	opacity: 1;
+	max-height: 100vh;
 }

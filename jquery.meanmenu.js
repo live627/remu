@@ -95,12 +95,9 @@
 									jQuery(meanRevealClass).html(meanMenuOpen);
 									$navreveal = jQuery(meanRevealClass);
 
-									//hide mean-nav ul
-									jQuery('.mean-nav ul').hide();
-
 												jQuery('.mean-nav ul ul').each(function() {
 														if(jQuery(this).children().length){
-																jQuery(this,'li:first').parent().append('<a class="mean-expand" href="#" style="font-size: '+ meanMenuCloseSize +'">'+ meanExpand +'</a>');
+																jQuery(this,'li:first').parent().append('<a class="mean-expand" href="#">'+ meanExpand +'</a>');
 														}
 														this.classList.add('animated');
 												});
