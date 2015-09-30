@@ -13,7 +13,6 @@
 						meanMenuClose: "X", // single character you want to represent the close menu button
 						meanMenuOpen: "<span /><span /><span />", // text/markup you want when menu is closed
 						meanScreenWidth: "480", // set the screen width you want meanmenu to kick in at
-						meanShowChildren: true, // true to show children in the menu, false to hide them
 						meanExpandableChildren: true, // true to allow expand/collapse children
 						meanExpand: "+", // single character you want to represent the expand for ULs
 						meanContract: "-", // single character you want to represent the contract for ULs
@@ -28,7 +27,6 @@
 						var meanMenuOpen = options.meanMenuOpen;
 						var meanScreenWidth = options.meanScreenWidth;
 						var meanRevealClass = ".meanmenu-reveal";
-						var meanShowChildren = options.meanShowChildren;
 						var meanExpandableChildren = options.meanExpandableChildren;
 						var meanExpand = options.meanExpand;
 						var meanContract = options.meanContract;
@@ -102,8 +100,6 @@
 									//hide mean-nav ul
 									jQuery('.mean-nav ul').hide();
 
-									// hide sub nav
-									if(meanShowChildren) {
 											// allow expandable sub nav(s)
 											if(meanExpandableChildren){
 												jQuery('.mean-nav ul ul').each(function() {
@@ -126,9 +122,6 @@
 											} else {
 													jQuery('.mean-nav ul ul').show();
 											}
-									} else {
-											jQuery('.mean-nav ul ul').hide();
-									}
 
 									$navreveal.removeClass("meanclose");
 									jQuery($navreveal).click(function(e){
