@@ -21,8 +21,8 @@
 				meanDisplay: "block", // override display method for table cell based layouts e.g. table-cell
 		}, options);
 
-		var meanMenu = options.meanMenuTarget;
-		var meanContainer = options.meanMenuContainer;
+		var meanMenu = document.querySelector(options.meanMenuTarget);
+		var meanContainer = document.querySelector(options.meanMenuContainer);
 		var meanMenuClose = options.meanMenuClose;
 		var meanMenuOpen = options.meanMenuOpen;
 		var meanScreenWidth = options.meanScreenWidth;
@@ -33,16 +33,13 @@
 		var onePage = options.onePage;
 		var meanDisplay = options.meanDisplay;
 		var meanMenuExist = false;
-
-		// set all styles for mean-reveal
-		var $navreveal = "";
+		var nav = [];
 
 		var meanInner = function() {
-			// get last class name
-			if (jQuery($navreveal).is(".meanmenu-reveal.meanclose")) {
-				$navreveal.html(meanMenuClose);
+			if (nav[1].classList.contains("meanclose")) {
+				nav[1].html(meanMenuClose);
 			} else {
-				$navreveal.html(meanMenuOpen);
+				nav[1].html(meanMenuOpen);
 			}
 		};
 
@@ -52,9 +49,9 @@
 				return;
 			}
 
-			jQuery('.mean-bar').remove();
-			jQuery(meanContainer).removeClass("mean-container");
-			jQuery(meanMenu).css('display', meanDisplay);
+			meanContainer.removeChidld(document.querySelector('.mean-bar'));
+			meanContainer.classList.remove("mean-container");
+			meanMenu.style.display = meanDisplay;
 			meanMenuExist = false;
 		};
 
@@ -66,8 +63,8 @@
 
 			meanMenuExist = true;
 			// add class to body so we don't need to worry about media queries here, all CSS is wrapped in '.mean-container'
-			jQuery(meanContainer).addClass("mean-container");
-			jQuery(meanContainer).prepend('<div class="mean-bar"><a href="#nav" class="meanmenu-reveal">Show Navigation</a><nav class="mean-nav"></nav></div>');
+			meanContainer.classList.add("mean-container");
+			prepend(meanContainer, '<div class="mean-bar"><a href="#nav" class="meanmenu-reveal">Show Navigation</a><nav id="mean-nav"></nav></div>');
 
 			//push meanMenu navigation into .mean-nav
 			var meanMenuContents = jQuery(meanMenu).html();
@@ -80,24 +77,22 @@
 					this.removeAttribute("id");
 				});
 			}
-			document.querySelector('.mean-nav ul').classList.add('animated');
-
-			// hide current navigation and reveal mean nav link
+			nav = document.querySelector('.mean-nav ul');
+			nav.classList.add('animated');
 			jQuery(meanMenu).hide();
+			nav[1] = document.querySelector(meanRevealClass);
+			jQuery(meanRevealClass).html(meanMenuOpen);
 			jQuery(".meanmenu-reveal").show();
 
-			// turn 'X' on or off
-			jQuery(meanRevealClass).html(meanMenuOpen);
-			$navreveal = jQuery(meanRevealClass);
-
-			jQuery('.mean-nav ul ul').each(function() {
-				if(jQuery(this).children().length){
-					jQuery(this,'li:first').parent().append('<a class="mean-expand" href="#">'+ meanExpand +'</a>');
+			var list = document.querySelectorAll( '.mean-nav ul ul' );
+			for (var item of list) {
+				if(item.childElementCount){
+					append(item.parentNode, '<a class="mean-expand" href="#">'+ meanExpand +'</a>');
 				}
-				this.classList.add('animated');
-			});
+				item.classList.add('animated');
+			}
 
-			jQuery('.mean-expand').on("click",function(e){
+			jQuery('.mean-expand').addEventListener("click",function(e){
 				e.preventDefault();
 				if (this.classList.contains("mean-clicked")) {
 					jQuery(this).text(meanExpand);
@@ -107,21 +102,21 @@
 					this.previousElementSibling.classList.add('slideInDown');
 				}
 				this.classList.toggle("mean-clicked");
-			});
+			}, false);
 
-			$navreveal.removeClass("meanclose");
-			jQuery($navreveal).click(function(e){
+			nav[1].classList.remove("meanclose");
+			nav[1].addEventListener(function(e){
 				e.preventDefault();
-				$navreveal.toggleClass("meanclose");
-				document.querySelector('.mean-nav ul').classList.toggle('slideInDown');
+				nav.classList.toggle('slideInDown');
+				nav[1].classList.toggle("meanclose");
 				meanInner();
-			});
+			}, false);
 
 			// for one page websites, reset all variables...
 			if ( onePage ) {
 				jQuery('.mean-nav ul > li > a:first-child').on( "click" , function () {
 					jQuery('.mean-nav ul:first').slideUp();
-					jQuery($navreveal).toggleClass("meanclose").html(meanMenuOpen);
+					nav[1].classList.remove("meanclose").html(meanMenuOpen);
 				});
 			}
 		};
