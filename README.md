@@ -12,11 +12,11 @@ Live Demo:
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="assets/js/plugins/jquery.meanmenu.js"></script>
-	<link rel="stylesheet" href="meanmenu.css" media="all" />
+    <link rel="stylesheet" href="meanmenu.css" media="all" />
 
-	document.addEventListener("DOMContentLoaded", function () {
-		new MeanMenu();
-	}, false);
+    document.addEventListener("DOMContentLoaded", function () {
+        new MeanMenu();
+    }, false);
 
 ### Options
 
@@ -27,7 +27,7 @@ Live Demo:
 `meanExpand: "+"` single character you want to represent the expand for ULs<br>
 `meanContract: "-"` single character you want to represent the contract for ULs<br>
 `meanRemoveAttrs: false` true to remove classes and IDs, false to keep them<br>
-`onePage: false` set to true for one page sites, the navigation will close back up on itself on click<br>
+`singlePage: false` set to true for single page sites, the navigation will close back up on itself on click<br>
 `meanDisplay: "block"` by default this is block, sometimes you may want to switch this to table or table-cell or inline-block etc. so now you can.<br>
 
 ## Changes from MeanMenu
@@ -40,5 +40,6 @@ Live Demo:
  - `meanNavPush`
  - `meanShowChildren`
  - `meanExpandableChildren`
-- `.mean-last` is no more as it was not being used and can be reinstated by a pseudo-selector
-- Also removed `.mean-remove` as it seemed redundant. To expand uupon the example given: if you had a search box called `.search`, use `.mean-container .search`
+ - `.mean-last` is no more as it was not being used and can be reinstated by a pseudo-selector
+ - Also removed `.mean-remove` as it seemed redundant. To expand uupon the example given: if you had a search box called `.search`, use `.mean-container .search`
+ - `onePage` was renamed to `singlePage`

@@ -32,7 +32,7 @@
                 meanExpand: "+", // single character you want to represent the expand for ULs
                 meanContract: "-", // single character you want to represent the contract for ULs
                 meanRemoveAttrs: false, // true to remove classes and IDs, false to keep them
-                onePage: false, // set to true for one page sites
+                singlePage: false, // set to true for one page sites
                 meanDisplay: "block", // override display method for table cell based layouts e.g. table-cell
         }, options);
 
@@ -45,7 +45,7 @@
         var meanExpand = options.meanExpand;
         var meanContract = options.meanContract;
         var meanRemoveAttrs = options.meanRemoveAttrs;
-        var onePage = options.onePage;
+        var singlePage = options.singlePage;
         var meanDisplay = options.meanDisplay;
         var meanMenuExist = false;
         var nav = [];
@@ -131,7 +131,7 @@
             }, false);
 
             // for one page websites, reset all variables...
-            if ( onePage ) {
+            if ( singlePage ) {
                 var list = meanContainer.querySelectorAll('.mean-nav ul > li > a:first-child');
                 for (var item of list) {
                     item.addEventListener("click",function(e){
