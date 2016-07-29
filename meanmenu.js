@@ -1,7 +1,7 @@
 /*!
-* jQuery meanMenu v2.0.8
+* meanMenu v2.0.8
 * @Copyright (C) 2012-2014 Chris Wharton @ MeanThemes (https://github.com/meanthemes/meanMenu)
-*
+* @Copyright (C) 2015-2016 John Rayes (http://live627.github.io/meanMenu/demo.html)
 */
 
 (function () {
@@ -9,20 +9,21 @@
 
     window.MeanMenu = function (options) {
         var extend = function(out) {
-  out = out || {};
+            out = out || {};
 
-  for (var i = 1; i < arguments.length; i++) {
-    if (!arguments[i])
-      continue;
+            for (var i = 1; i < arguments.length; i++) {
+                if (!arguments[i])
+                    continue;
 
-    for (var key in arguments[i]) {
-      if (arguments[i].hasOwnProperty(key))
-        out[key] = arguments[i][key];
-    }
-  }
+                for (var key in arguments[i]) {
+                    if (arguments[i].hasOwnProperty(key))
+                        out[key] = arguments[i][key];
+                }
+            }
 
-  return out;
-};
+            return out;
+        };
+
         options = extend({
                 meanMenuTarget: 'header nav', // Target the current HTML markup you wish to replace
                 meanMenuContainer: 'body', // Choose where meanmenu will be placed within the HTML
