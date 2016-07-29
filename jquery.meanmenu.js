@@ -4,15 +4,30 @@
 *
 */
 
-(function ($) {
+(function () {
     "use strict";
 
     window.MeanMenu = function (options) {
-        options = $.extend({
+        var extend = function(out) {
+  out = out || {};
+
+  for (var i = 1; i < arguments.length; i++) {
+    if (!arguments[i])
+      continue;
+
+    for (var key in arguments[i]) {
+      if (arguments[i].hasOwnProperty(key))
+        out[key] = arguments[i][key];
+    }
+  }
+
+  return out;
+};
+        options = extend({
                 meanMenuTarget: 'header nav', // Target the current HTML markup you wish to replace
                 meanMenuContainer: 'body', // Choose where meanmenu will be placed within the HTML
                 meanMenuClose: "X", // single character you want to represent the close menu button
-                meanMenuOpen: "<span /><span /><span />", // text/markup you want when menu is closed
+                meanMenuOpen: "<span></span><span></span><span></span>", // text/markup you want when menu is closed
                 meanScreenWidth: "480", // set the screen width you want meanmenu to kick in at
                 meanExpand: "+", // single character you want to represent the expand for ULs
                 meanContract: "-", // single character you want to represent the contract for ULs
@@ -72,17 +87,17 @@
 
             // remove all classes from EVERYTHING inside meanmenu nav
             if(meanRemoveAttrs) {
-                jQuery('nav.mean-nav ul, nav.mean-nav ul *').each(function() {
-                    this.removeAttribute("class");
-                    this.removeAttribute("id");
+                Array.prototype.slice.call(document.querySelectorAll('.mean-nav ul, .mean-nav ul *')).forEach((el) => {
+                    el.removeAttribute("class");
+                    el.removeAttribute("id");
                 });
             }
             nav = meanContainer.querySelector('.mean-nav ul');
             nav.classList.add('animated');
-            jQuery(meanMenu).hide();
+            meanMenu.style.display = 'none';
             nav[1] = document.querySelector(meanRevealClass);
-            jQuery(meanRevealClass).html(meanMenuOpen);
-            jQuery(".meanmenu-reveal").show();
+            nav[1].innerHTML = meanMenuOpen;
+            meanContainer.querySelector(".meanmenu-reveal").style.display = '';
 
             var list = meanContainer.querySelectorAll( '.mean-nav ul ul' );
             for (var item of list) {
@@ -117,10 +132,17 @@
 
             // for one page websites, reset all variables...
             if ( onePage ) {
-                jQuery('.mean-nav ul > li > a:first-child').on( "click" , function () {
-                    jQuery('.mean-nav ul:first').slideUp();
-                    nav[1].classList.remove("meanclose").html(meanMenuOpen);
-                });
+                var list = meanContainer.querySelectorAll('.mean-nav ul > li > a:first-child');
+                for (var item of list) {
+                    item.addEventListener("click",function(e){
+                        e.preventDefault();
+                        Array.prototype.slice.call(document.querySelectorAll('.mean-nav ul')).forEach((el) => {
+                            el.classList.remove('slideInDown');
+                        });
+                        nav[1].classList.remove("meanclose");
+                        nav[1].innerHTML = meanMenuOpen;
+                    });
+                }
             }
         };
 
@@ -140,4 +162,4 @@
         // run main menuMenu function on load
         refreshMeanMenu();
     };
-})(jQuery);
+})();
