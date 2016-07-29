@@ -2,17 +2,15 @@
 
 A menu system for converting a standard menu into a mobile/tablet responsive menu, media query independent.
 
-**Please note: This is not a menu system replacement. It is simply a lightweight piece of jQuery to convert a standard navigation into a mobile/tablet navigation.**
+**Please note: This is not a menu system replacement. It is simply a lightweight script to convert a standard navigation into a mobile/tablet navigation.**
 
 
-Live Demo:
-<a href="http://www.meanthemes.com/demo/meanmenu/demo.html">http://www.meanthemes.com/demo/meanmenu/demo.html</a>
+[Live Demo](http://live627.github.io/meanMenu/demo.html)
 
 ## Usage
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script src="assets/js/plugins/jquery.meanmenu.js"></script>
-    <link rel="stylesheet" href="meanmenu.css" media="all" />
+    <script src="meanmenu.js"></script>
+    <link rel="stylesheet" href="meanmenu.css" media="screen" />
 
     document.addEventListener("DOMContentLoaded", function () {
         new MeanMenu();
