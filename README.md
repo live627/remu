@@ -1,19 +1,19 @@
-# remuMenu v2.0.8
+# Remu v1.0
 
 A menu system for converting a standard menu into a mobile/tablet responsive menu, media query independent.
 
 **Please note: This is not a menu system replacement. It is simply a lightweight script to convert a standard navigation into a mobile/tablet navigation.**
 
 
-[Live Demo](http://live627.github.io/remuMenu/demo.html)
+[Live Demo](http://live627.github.io/remu/demo.html)
 
 ## Usage
 
-    <script src="remumenu.js"></script>
-    <link rel="stylesheet" href="remumenu.css" media="screen" />
+    <script src="remu.js"></script>
+    <link rel="stylesheet" href="remu.css" media="screen" />
 
     document.addEventListener("DOMContentLoaded", function () {
-        new remuMenu();
+        new remu();
     }, false);
 
 ### Options
@@ -27,17 +27,3 @@ A menu system for converting a standard menu into a mobile/tablet responsive men
 `remuRemoveAttrs: false` true to remove classes and IDs, false to keep them<br>
 `singlePage: false` set to true for single page sites, the navigation will close back up on itself on click<br>
 `remuDisplay: "block"` by default this is block, sometimes you may want to switch this to table or table-cell or inline-block etc. so now you can.<br>
-
-## Changes from remuMenu
-- Removed the following properties in favor of CSS:
- - `remuRevealPosition`
- - `remuRevealPositionDistance`
- - `remuRevealColour`
- - `remuMenuCloseSize`
- - `removeElements`
- - `remuNavPush`
- - `remuShowChildren`
- - `remuExpandableChildren`
- - `.remu-last` is no more as it was not being used and can be reinstated by a pseudo-selector
- - Also removed `.remu-remove` as it seemed redundant. To expand uupon the example given: if you had a search box called `.search`, use `.remu .search`
- - `onePage` was renamed to `singlePage`
