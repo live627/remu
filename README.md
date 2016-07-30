@@ -19,8 +19,6 @@ A menu system for converting a standard menu into a mobile/tablet responsive men
 ### Options
 
 - `remuContainer: 'body'` Choose where Remu will be placed within the HTML
-- `remuClose: "X"` Single character you want to represent the close menu button
-- `remuOpen: "<span /><span /><span />"` Text/markup you want when menu is closed, styling in CSS provides 3 bars with these spans
 - `remuScreenWidth: "480"` Set the screen width you want Remu to kick in at
 - `remuExpand: "+"` single character you want to represent the expand for ULs
 - `remuContract: "-"` single character you want to represent the contract for ULs

@@ -27,8 +27,6 @@
         options = extend({
                 remuTarget: 'header nav', // Target the current HTML markup you wish to replace
                 remuContainer: 'body', // Choose where remu will be placed within the HTML
-                remuClose: "X", // single character you want to represent the close menu button
-                remuOpen: "<span></span><span></span><span></span>", // text/markup you want when menu is closed
                 remuScreenWidth: "480", // set the screen width you want remu to kick in at
                 remuExpand: "+", // single character you want to represent the expand for ULs
                 remuContract: "-", // single character you want to represent the contract for ULs
@@ -39,8 +37,6 @@
 
         var remu = document.querySelector(options.remuTarget);
         var remuContainer = document.querySelector(options.remuContainer);
-        var remuClose = options.remuClose;
-        var remuOpen = options.remuOpen;
         var remuScreenWidth = options.remuScreenWidth;
         var remuRevealClass = ".navicon";
         var remuExpand = options.remuExpand;
@@ -50,14 +46,6 @@
         var remuDisplay = options.remuDisplay;
         var remuExist = false;
         var nav = [];
-
-        var remuInner = function() {
-            if (nav[1].classList.contains("remuclose")) {
-                nav[1].innerHTML = remuClose;
-            } else {
-                nav[1].innerHTML = remuOpen;
-            }
-        };
 
         // re-instate original nav (and call this on window.width functions)
         var remuOriginal = function() {
@@ -80,7 +68,7 @@
             remuExist = true;
             // add class to body so we don't need to worry about media queries here, all CSS is wrapped in '.remu'
             remuContainer.classList.add("remu");
-            remuContainer.insertAdjacentHTML('afterbegin', '<div class="remu-bar"><a href="#nav" class="navicon">Show Navigation</a><nav class="remu-nav"></nav></div>');
+            remuContainer.insertAdjacentHTML('afterbegin', '<div class="remu-bar"><a href="#nav" class="navicon"></a><nav class="remu-nav"></nav></div>');
 
             //push remu navigation into .remu-nav
             var remuContents = remu.innerHTML;
@@ -97,8 +85,6 @@
             nav.classList.add('animated');
             remu.style.display = 'none';
             nav[1] = document.querySelector(remuRevealClass);
-            nav[1].innerHTML = remuOpen;
-            nav[1].style.display = '';
 
             var list = remuContainer.querySelectorAll( '.remu-nav ul ul' );
             for (var item of list) {
