@@ -1,7 +1,7 @@
 /*!
 * Remu v1.0
-* @Copyright (C) 2012-2014 Chris Wharton @ remuThemes (https://github.com/remuthemes/remuMenu)
-* @Copyright (C) 2015-2016 John Rayes (http://live627.github.io/remuMenu/demo.html)
+* @Copyright (C) 2012-2014 Chris Wharton @ remuThemes (https://github.com/remuthemes/remu)
+* @Copyright (C) 2015-2016 John Rayes (http://live627.github.io/remu/demo.html)
 */
 
 (function () {
@@ -25,11 +25,11 @@
         };
 
         options = extend({
-                remuMenuTarget: 'header nav', // Target the current HTML markup you wish to replace
-                remuMenuContainer: 'body', // Choose where remumenu will be placed within the HTML
-                remuMenuClose: "X", // single character you want to represent the close menu button
-                remuMenuOpen: "<span></span><span></span><span></span>", // text/markup you want when menu is closed
-                remuScreenWidth: "480", // set the screen width you want remumenu to kick in at
+                remuTarget: 'header nav', // Target the current HTML markup you wish to replace
+                remuContainer: 'body', // Choose where remu will be placed within the HTML
+                remuClose: "X", // single character you want to represent the close menu button
+                remuOpen: "<span></span><span></span><span></span>", // text/markup you want when menu is closed
+                remuScreenWidth: "480", // set the screen width you want remu to kick in at
                 remuExpand: "+", // single character you want to represent the expand for ULs
                 remuContract: "-", // single character you want to represent the contract for ULs
                 remuRemoveAttrs: false, // true to remove classes and IDs, false to keep them
@@ -37,10 +37,10 @@
                 remuDisplay: "block", // override display method for table cell based layouts e.g. table-cell
         }, options);
 
-        var remuMenu = document.querySelector(options.remuMenuTarget);
-        var remuContainer = document.querySelector(options.remuMenuContainer);
-        var remuMenuClose = options.remuMenuClose;
-        var remuMenuOpen = options.remuMenuOpen;
+        var remu = document.querySelector(options.remuTarget);
+        var remuContainer = document.querySelector(options.remuContainer);
+        var remuClose = options.remuClose;
+        var remuOpen = options.remuOpen;
         var remuScreenWidth = options.remuScreenWidth;
         var remuRevealClass = ".navicon";
         var remuExpand = options.remuExpand;
@@ -48,45 +48,45 @@
         var remuRemoveAttrs = options.remuRemoveAttrs;
         var singlePage = options.singlePage;
         var remuDisplay = options.remuDisplay;
-        var remuMenuExist = false;
+        var remuExist = false;
         var nav = [];
 
         var remuInner = function() {
             if (nav[1].classList.contains("remuclose")) {
-                nav[1].innerHTML = remuMenuClose;
+                nav[1].innerHTML = remuClose;
             } else {
-                nav[1].innerHTML = remuMenuOpen;
+                nav[1].innerHTML = remuOpen;
             }
         };
 
         // re-instate original nav (and call this on window.width functions)
         var remuOriginal = function() {
-            if (!remuMenuExist) {
+            if (!remuExist) {
                 return;
             }
 
             remuContainer.removeChild(remuContainer.querySelector('.remu-bar'));
             remuContainer.classList.remove("remu");
-            remuMenu.style.display = remuDisplay;
-            remuMenuExist = false;
+            remu.style.display = remuDisplay;
+            remuExist = false;
         };
 
         // navigation reveal
-        var showremuMenu = function() {
-            if (remuMenuExist) {
+        var showremu = function() {
+            if (remuExist) {
                 return;
             }
 
-            remuMenuExist = true;
+            remuExist = true;
             // add class to body so we don't need to worry about media queries here, all CSS is wrapped in '.remu'
             remuContainer.classList.add("remu");
             remuContainer.insertAdjacentHTML('afterbegin', '<div class="remu-bar"><a href="#nav" class="navicon">Show Navigation</a><nav class="remu-nav"></nav></div>');
 
-            //push remuMenu navigation into .remu-nav
-            var remuMenuContents = remuMenu.innerHTML;
-            remuContainer.querySelector('.remu-nav').innerHTML = remuMenuContents;
+            //push remu navigation into .remu-nav
+            var remuContents = remu.innerHTML;
+            remuContainer.querySelector('.remu-nav').innerHTML = remuContents;
 
-            // remove all classes from EVERYTHING inside remumenu nav
+            // remove all classes from EVERYTHING inside remu nav
             if(remuRemoveAttrs) {
                 Array.prototype.slice.call(document.querySelectorAll('.remu-nav ul, .remu-nav ul *')).forEach((el) => {
                     el.removeAttribute("class");
@@ -95,9 +95,9 @@
             }
             nav = remuContainer.querySelector('.remu-nav ul');
             nav.classList.add('animated');
-            remuMenu.style.display = 'none';
+            remu.style.display = 'none';
             nav[1] = document.querySelector(remuRevealClass);
-            nav[1].innerHTML = remuMenuOpen;
+            nav[1].innerHTML = remuOpen;
             nav[1].style.display = '';
 
             var list = remuContainer.querySelectorAll( '.remu-nav ul ul' );
@@ -140,7 +140,7 @@
                             el.classList.remove('slideInDown');
                         });
                         nav[1].classList.remove("remuclose");
-                        nav[1].innerHTML = remuMenuOpen;
+                        nav[1].innerHTML = remuOpen;
                     });
                 }
             }
@@ -151,7 +151,7 @@
             var currentWidth = window.innerWidth || document.documentElement.clientWidth;
 
             if (currentWidth <= remuScreenWidth) {
-                showremuMenu();
+                showremu();
             } else {
                 remuOriginal();
             }
