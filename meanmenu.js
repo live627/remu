@@ -42,7 +42,7 @@
         var meanMenuClose = options.meanMenuClose;
         var meanMenuOpen = options.meanMenuOpen;
         var meanScreenWidth = options.meanScreenWidth;
-        var meanRevealClass = ".meanmenu-reveal";
+        var meanRevealClass = ".navicon";
         var meanExpand = options.meanExpand;
         var meanContract = options.meanContract;
         var meanRemoveAttrs = options.meanRemoveAttrs;
@@ -80,7 +80,7 @@
             meanMenuExist = true;
             // add class to body so we don't need to worry about media queries here, all CSS is wrapped in '.mean-container'
             meanContainer.classList.add("mean-container");
-            meanContainer.insertAdjacentHTML('afterbegin', '<div class="mean-bar"><a href="#nav" class="meanmenu-reveal">Show Navigation</a><nav class="mean-nav"></nav></div>');
+            meanContainer.insertAdjacentHTML('afterbegin', '<div class="mean-bar"><a href="#nav" class="navicon">Show Navigation</a><nav class="mean-nav"></nav></div>');
 
             //push meanMenu navigation into .mean-nav
             var meanMenuContents = meanMenu.innerHTML;
@@ -98,7 +98,7 @@
             meanMenu.style.display = 'none';
             nav[1] = document.querySelector(meanRevealClass);
             nav[1].innerHTML = meanMenuOpen;
-            meanContainer.querySelector(".meanmenu-reveal").style.display = '';
+            nav[1].style.display = '';
 
             var list = meanContainer.querySelectorAll( '.mean-nav ul ul' );
             for (var item of list) {
@@ -128,7 +128,6 @@
                 e.preventDefault();
                 nav.classList.toggle('slideInDown');
                 nav[1].classList.toggle("meanclose");
-                meanInner();
             }, false);
 
             // for one page websites, reset all variables...
