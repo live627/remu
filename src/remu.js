@@ -61,19 +61,18 @@ module.exports = window.Remu = function (options) {
                 el.removeAttribute("id");
             });
         }
-        nav = remuContainer.querySelector('.remu-nav ul');
-        nav.classList.add('animated');
+        nav = remuContainer.querySelector('.remu-nav');
         remu.style.display = 'none';
         nav[1] = document.querySelector(remuRevealClass);
 
-        Array.prototype.slice.call(document.querySelectorAll('.remu-nav ul ul')).forEach(function(el) {
+        Array.prototype.slice.call(nav.querySelectorAll('ul')).forEach(function(el) {
             if(el.childElementCount){
                 el.parentNode.insertAdjacentHTML('beforeend', '<a class="remu-expand" href="#"></a>');
             }
             el.classList.add('animated');
         });
 
-        Array.prototype.slice.call(document.querySelectorAll('.remu-expand')).forEach(function(el) {
+        Array.prototype.slice.call(nav.querySelectorAll('.remu-expand')).forEach(function(el) {
             el.addEventListener("click",function(e){
                 e.preventDefault();
                 if (this.classList.contains("remu-clicked")) {
@@ -88,16 +87,16 @@ module.exports = window.Remu = function (options) {
         nav[1].classList.remove("remuclose");
         nav[1].addEventListener("click",function(e){
             e.preventDefault();
-            nav.classList.toggle('slideInDown');
+            nav.firstElementChild.classList.toggle('slideInDown');
             nav[1].classList.toggle("remuclose");
         }, false);
 
         // for one page websites, reset all variables...
         if ( singlePage ) {
-            Array.prototype.slice.call(document.querySelectorAll('.remu-nav ul > li > a:first-child')).forEach(function(el) {
-                el.addEventListener("click",function(e){
+             Array.prototype.slice.call(nav.querySelectorAll('li > a:first-child')).forEach(function(elm) {
+                elm.addEventListener("click",function(e){
                     e.preventDefault();
-                    Array.prototype.slice.call(document.querySelectorAll('.remu-nav ul')).forEach(function(el) {
+                    Array.prototype.slice.call(nav.querySelectorAll('ul')).forEach(function(el) {
                         el.classList.remove('slideInDown');
                         if (el.firstElementChild.children[2]) {
                             el.firstElementChild.children[2].classList.remove('remu-clicked');
