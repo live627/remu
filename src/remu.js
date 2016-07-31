@@ -99,6 +99,9 @@ module.exports = window.Remu = function (options) {
                     e.preventDefault();
                     Array.prototype.slice.call(document.querySelectorAll('.remu-nav ul')).forEach(function(el) {
                         el.classList.remove('slideInDown');
+                        if (el.firstElementChild.children[2]) {
+                            el.firstElementChild.children[2].classList.remove('remu-clicked');
+                        }
                     });
                     nav[1].classList.remove("remuclose");
                 });
