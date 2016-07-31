@@ -101,7 +101,6 @@ module.exports = window.Remu = function (options) {
                         el.classList.remove('slideInDown');
                     });
                     nav[1].classList.remove("remuclose");
-                    nav[1].innerHTML = remuOpen;
                 });
             });
         }
