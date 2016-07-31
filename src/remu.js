@@ -11,8 +11,6 @@ module.exports = window.Remu = function (options) {
             remuTarget: 'header nav', // Target the current HTML markup you wish to replace
             remuContainer: 'body', // Choose where remu will be placed within the HTML
             remuScreenWidth: "480", // set the screen width you want remu to kick in at
-            remuExpand: "+", // single character you want to represent the expand for ULs
-            remuContract: "-", // single character you want to represent the contract for ULs
             remuRemoveAttrs: false, // true to remove classes and IDs, false to keep them
             singlePage: false, // set to true for one page sites
             remuDisplay: "block", // override display method for table cell based layouts e.g. table-cell
@@ -22,8 +20,6 @@ module.exports = window.Remu = function (options) {
     var remuContainer = document.querySelector(options.remuContainer);
     var remuScreenWidth = options.remuScreenWidth;
     var remuRevealClass = ".navicon";
-    var remuExpand = options.remuExpand;
-    var remuContract = options.remuContract;
     var remuRemoveAttrs = options.remuRemoveAttrs;
     var singlePage = options.singlePage;
     var remuDisplay = options.remuDisplay;
@@ -72,7 +68,7 @@ module.exports = window.Remu = function (options) {
 
         Array.prototype.slice.call(document.querySelectorAll('.remu-nav ul ul')).forEach(function(el) {
             if(el.childElementCount){
-                el.parentNode.insertAdjacentHTML('beforeend', '<a class="remu-expand" href="#">'+ remuExpand +'</a>');
+                el.parentNode.insertAdjacentHTML('beforeend', '<a class="remu-expand" href="#"></a>');
             }
             el.classList.add('animated');
         });
@@ -81,10 +77,8 @@ module.exports = window.Remu = function (options) {
             el.addEventListener("click",function(e){
                 e.preventDefault();
                 if (this.classList.contains("remu-clicked")) {
-                    this.textContent = remuExpand;
                     this.previousElementSibling.classList.remove('slideInDown');
                 } else {
-                    this.textContent = remuContract;
                     this.previousElementSibling.classList.add('slideInDown');
                 }
                 this.classList.toggle("remu-clicked");

@@ -83,6 +83,12 @@
                         border-bottom: 1px solid rgba(255,255,255,0.2) !important
                         &:hover
                             background: rgba(0,0,0,0.9)
+                        &:before
+                            font-size: 18px
+                        &.remu-clicked:before
+                            content: '-'
+                        &:not(.remu-clicked):before
+                            content: '+'
             li li a
                 width: 80%
                 padding: 1em 10%

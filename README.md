@@ -38,8 +38,6 @@ Remu is also expposed globally.
 
 - `remuContainer: 'body'` Choose where Remu will be placed within the HTML
 - `remuScreenWidth: "480"` Set the screen width you want Remu to kick in at
-- `remuExpand: "+"` single character you want to represent the expand for ULs
-- `remuContract: "-"` single character you want to represent the contract for ULs
 - `remuRemoveAttrs: false` true to remove classes and IDs, false to keep them
 - `singlePage: false` set to true for single page sites, the navigation will close back up on itself on click
 - `remuDisplay: "block"` by default this is block, sometimes you may want to switch this to table or table-cell or inline-block etc. so now you can.
