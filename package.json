@@ -1,0 +1,39 @@
+{
+  "name": "remu",
+  "version": "1.0.0",
+  "description": "A menu system for converting a standard menu into a mobile/tablet responsive menu, media query independent.",
+  "main": "src/remu.js",
+  "repository": {
+    "type": "git",
+    "url": "https://live627@github.com/live627/remu.git"
+  },
+  "keywords": [
+    "menu system",
+    "responsive menu",
+    "menu",
+    "media",
+    "remu"
+  ],
+  "author": "live627 <live627@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/live627/remu/issues"
+  },
+  "homepage": "https://github.com/live627/remu",
+  "dependencies": {
+    "xtend": "^4.0.1"
+  },
+  "devDependencies": {
+    "browserify": "^13.1.0",
+    "gulp": "^3.9.1",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.1",
+    "gulp-sourcemaps": "^2.0.0-alpha",
+    "gulp-uglify": "^1.5.4",
+    "gulp-util": "^3.0.7",
+    "node-sass": "^3.7.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
