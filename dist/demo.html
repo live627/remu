@@ -66,7 +66,7 @@
             padding: 3em 2%;
         }
     </style>
-    <link rel="stylesheet" href="remu.css" media="all" />
+    <link rel="stylesheet" href="remu.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 
@@ -113,13 +113,18 @@
     </article>
 </section>
 
-<script src="remu.js"></script>
+<section>
+    <button id="show">Show</button>
+    <button id="hide">hide</button>
+</section>
+
+<script src="remu.min.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        new Remu({
-            singlePage: true
-        });
-    }, false);
+    var Remu = new Remu({
+        singlePage: true
+    });
+    document.getElementById('show').addEventListener('click', Remu.show);
+    document.getElementById('hide').addEventListener('click', Remu.hide);
 </script>
 </body>
 </html>
