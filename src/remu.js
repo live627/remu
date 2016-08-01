@@ -123,4 +123,8 @@ module.exports = window.Remu = function (options) {
 
     // run main menuMenu function on load
     refresh();
-};
+
+    // Expose methods
+    this.show = showremu;
+    this.hide = remuOriginal;
+}

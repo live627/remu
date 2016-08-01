@@ -27,17 +27,21 @@ CommonJS:
 var Remu = require('remu');
 ```
 Remu is also expposed globally.
-    <script src="remu.js"></script>
-    <link rel="stylesheet" href="remu.css" media="screen" />
-
-    document.addEventListener("DOMContentLoaded", function () {
-        new Remu();
-    }, false);
-
+    <link rel="stylesheet" href="remu.css" />
+    <script src="remu.min.js"></script>
+    <script>
+        var Remu = new Remu({
+            singlePage: true
+        });
+        document.getElementById('show').addEventListener('click', Remu.show);
+        document.getElementById('hide').addEventListener('click', Remu.hide);
+    </script>
 ### Options
-
 - `remuContainer: 'body'` Choose where Remu will be placed within the HTML
 - `remuScreenWidth: "480"` Set the screen width you want Remu to kick in at
 - `remuRemoveAttrs: false` true to remove classes and IDs, false to keep them
 - `singlePage: false` set to true for single page sites, the navigation will close back up on itself on click
 - `remuDisplay: "block"` by default this is block, sometimes you may want to switch this to table or table-cell or inline-block etc. so now you can.
+### Methods
+`show` Shows Remu. Screen width is not taken into consideration, so it will work regardless of the viewport.
+`hide` Will hide Remu and restore the original menu.
