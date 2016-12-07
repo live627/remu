@@ -16,18 +16,18 @@ module.exports = window.Remu = function (options) {
             remuDisplay: "block", // override display method for table cell based layouts e.g. table-cell
     }, options);
 
-    var remu = document.querySelector(options.remuTarget);
-    var remuContainer = document.querySelector(options.remuContainer);
-    var remuScreenWidth = options.remuScreenWidth;
-    var remuRevealClass = ".navicon";
-    var remuRemoveAttrs = options.remuRemoveAttrs;
-    var singlePage = options.singlePage;
-    var remuDisplay = options.remuDisplay;
-    var remuExist = false;
-    var nav = [];
+    let remu = document.querySelector(options.remuTarget);
+    let remuContainer = document.querySelector(options.remuContainer);
+    let remuScreenWidth = options.remuScreenWidth;
+    let remuRevealClass = ".navicon";
+    let remuRemoveAttrs = options.remuRemoveAttrs;
+    let singlePage = options.singlePage;
+    let remuDisplay = options.remuDisplay;
+    let remuExist = false;
+    let nav = [];
 
     // re-instate original nav (and call this on window.width functions)
-    var remuOriginal = function() {
+    let remuOriginal = () => {
         if (!remuExist) {
             return;
         }
@@ -39,7 +39,7 @@ module.exports = window.Remu = function (options) {
     };
 
     // navigation reveal
-    var showremu = function() {
+    let showremu = () => {
         if (remuExist) {
             return;
         }
@@ -50,13 +50,12 @@ module.exports = window.Remu = function (options) {
         remuContainer.insertAdjacentHTML('afterbegin', '<div class="remu-bar"><a href="#nav" class="navicon"></a><nav class="remu-nav"></nav></div>');
 
         //push remu navigation into .remu-nav
-        var remuContents = remu.innerHTML;
+        let remuContents = remu.innerHTML;
         remuContainer.querySelector('.remu-nav').innerHTML = remuContents;
 
         // remove all classes from EVERYTHING inside remu nav
         if(remuRemoveAttrs) {
-            //~ Array.prototype.slice.call(document.querySelectorAll('.remu-nav ul, .remu-nav ul *')).forEach((el) => {
-            Array.prototype.slice.call(document.querySelectorAll('.remu-nav ul, .remu-nav ul *')).forEach(function(el) {
+            Array.from(document.querySelectorAll('.remu-nav ul, .remu-nav ul *')).forEach(el => {
                 el.removeAttribute("class");
                 el.removeAttribute("id");
             });
@@ -65,14 +64,14 @@ module.exports = window.Remu = function (options) {
         remu.style.display = 'none';
         nav[1] = document.querySelector(remuRevealClass);
 
-        Array.prototype.slice.call(nav.querySelectorAll('ul')).forEach(function(el) {
+        Array.from(nav.querySelectorAll('ul')).forEach(el => {
             if(el.childElementCount){
                 el.parentNode.insertAdjacentHTML('beforeend', '<a class="remu-expand" href="#"></a>');
             }
             el.classList.add('animated');
         });
 
-        Array.prototype.slice.call(nav.querySelectorAll('.remu-expand')).forEach(function(el) {
+        Array.from(nav.querySelectorAll('.remu-expand')).forEach(el => {
             el.addEventListener("click",function(e){
                 e.preventDefault();
                 if (this.classList.contains("remu-clicked")) {
@@ -85,7 +84,7 @@ module.exports = window.Remu = function (options) {
         });
 
         nav[1].classList.remove("remuclose");
-        nav[1].addEventListener("click",function(e){
+        nav[1].addEventListener("click", e => {
             e.preventDefault();
             nav.firstElementChild.classList.toggle('slideInDown');
             nav[1].classList.toggle("remuclose");
@@ -93,10 +92,10 @@ module.exports = window.Remu = function (options) {
 
         // for one page websites, reset all variables...
         if ( singlePage ) {
-             Array.prototype.slice.call(nav.querySelectorAll('li > a:first-child')).forEach(function(elm) {
-                elm.addEventListener("click",function(e){
+             Array.from(nav.querySelectorAll('li > a:first-child')).forEach(elm => {
+                elm.addEventListener("click", e => {
                     e.preventDefault();
-                    Array.prototype.slice.call(nav.querySelectorAll('ul')).forEach(function(el) {
+                    Array.from(nav.querySelectorAll('ul')).forEach(el => {
                         el.classList.remove('slideInDown');
                         if (el.firstElementChild.children[2]) {
                             el.firstElementChild.children[2].classList.remove('remu-clicked');
@@ -108,9 +107,9 @@ module.exports = window.Remu = function (options) {
         }
     };
 
-    var refresh = function() {
+    let refresh = () => {
         // get browser width
-        var currentWidth = window.innerWidth || document.documentElement.clientWidth;
+        let currentWidth = window.innerWidth || document.documentElement.clientWidth;
 
         if (currentWidth <= remuScreenWidth) {
             showremu();

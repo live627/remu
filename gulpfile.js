@@ -1,40 +1,35 @@
 'use strict';
 
-var gulp = require('gulp');
-var webpack = require('webpack');
-var sass = require('gulp-sass');
-var cssmin = require('gulp-cssmin');
-var rename = require('gulp-rename');
-var browserify = require('browserify');
-var source = require('vinyl-source-stream');
-var buffer = require('vinyl-buffer');
-var uglify = require('gulp-uglify');
-var sourcemaps = require('gulp-sourcemaps');
-var gutil = require('gulp-util');
+let gulp       = require('gulp'),
+    source     = require('vinyl-source-stream'),
+    browserify = require('browserify'),
+    gutil      = require('gulp-util'),
+    buffer     = require('vinyl-buffer'),
+    sourcemaps = require('gulp-sourcemaps'),
+    uglify     = require('gulp-uglify'),
+    babelify   = require('babelify'),
+    file       = 'src/remu.js';
 
-gulp.task('javascript', function () {
-  // set up the browserify instance on a task basis
-  var b = browserify({
-    entries: './src/remu.js',
-    debug: true
-  });
+let sass = require('gulp-sass');
+let cssmin = require('gulp-cssmin');
+let rename = require('gulp-rename');
 
-  return b.bundle()
+gulp.task('javascript', () => {
+    return browserify(file,{debug:true}).transform(babelify, {presets: ["es2015"],sourceMaps:true})
+    .bundle()
     .pipe(source('remu.js'))
     .pipe(buffer())
     .pipe(gulp.dest('./dist'))
     .pipe(sourcemaps.init({loadMaps: true}))
-        // Add transformation tasks to the pipeline here.
-        .pipe(uglify())
-        .on('error', gutil.log)
     .pipe(rename({suffix: '.min'}))
+    .pipe(uglify())
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('build', ['javascript', 'css']);
 
-gulp.task('css', function () {
+gulp.task('css', () => {
   return gulp.src('src/remu.sass')
     .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
     .pipe(gulp.dest('dist'))
@@ -43,7 +38,7 @@ gulp.task('css', function () {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('watch', function () {
+gulp.task('watch', () => {
   gulp.watch('./src/*', ['build']);
 });
 gulp.task('default', ['watch']);
