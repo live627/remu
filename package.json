@@ -34,7 +34,7 @@
     "gulp-sourcemaps": "^2.0.0-alpha",
     "gulp-uglify": "^1.5.4",
     "gulp-util": "^3.0.7",
-    "node-sass": "^3.7.0",
+    "node-sass": "^4.14.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   }
