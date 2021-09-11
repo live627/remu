@@ -4,9 +4,9 @@
 * @Copyright (C) 2015-2016 John Rayes (http://live627.github.io/remu/demo.html)
 */
 
-'use strict';
-var extend = require('xtend');
-module.exports = window.Remu = function (options) {
+import extend from 'xtend';
+
+export default window.Remu = function (options) {
     options = extend({
             remuTarget: 'header nav', // Target the current HTML markup you wish to replace
             remuContainer: 'body', // Choose where remu will be placed within the HTML
@@ -64,11 +64,11 @@ module.exports = window.Remu = function (options) {
         remu.style.display = 'none';
         nav[1] = document.querySelector(remuRevealClass);
 
-        Array.from(nav.querySelectorAll('ul')).forEach(el => {
-            if(el.childElementCount){
-                el.parentNode.insertAdjacentHTML('beforeend', '<a class="remu-expand" href="#"></a>');
+        Array.from(nav.querySelectorAll('ul')).forEach(({childElementCount, parentNode, classList}) => {
+            if(childElementCount){
+                parentNode.insertAdjacentHTML('beforeend', '<a class="remu-expand" href="#"></a>');
             }
-            el.classList.add('animated');
+            classList.add('animated');
         });
 
         Array.from(nav.querySelectorAll('.remu-expand')).forEach(el => {
@@ -95,10 +95,10 @@ module.exports = window.Remu = function (options) {
              Array.from(nav.querySelectorAll('li > a:first-child')).forEach(elm => {
                 elm.addEventListener("click", e => {
                     e.preventDefault();
-                    Array.from(nav.querySelectorAll('ul')).forEach(el => {
-                        el.classList.remove('slideInDown');
-                        if (el.firstElementChild.children[2]) {
-                            el.firstElementChild.children[2].classList.remove('remu-clicked');
+                    Array.from(nav.querySelectorAll('ul')).forEach(({classList, firstElementChild}) => {
+                        classList.remove('slideInDown');
+                        if (firstElementChild.children[2]) {
+                            firstElementChild.children[2].classList.remove('remu-clicked');
                         }
                     });
                     nav[1].classList.remove("remuclose");
@@ -126,4 +126,4 @@ module.exports = window.Remu = function (options) {
     // Expose methods
     this.show = showremu;
     this.hide = remuOriginal;
-}
+};
